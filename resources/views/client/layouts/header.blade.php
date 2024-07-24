@@ -10,13 +10,11 @@
         <div class="collapse navbar-collapse" id="navbarsFurni">
             <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="">Home</a>
+                    <a class="nav-link" href="">Trang chủ</a>
                 </li>
-                <li><a class="nav-link" href="">Shop</a></li>
-                <li><a class="nav-link" href="">About us</a></li>
-                <li><a class="nav-link" href="">Services</a></li>
-                <li><a class="nav-link" href="">Blog</a></li>
-                <li><a class="nav-link" href="">Contact us</a></li>
+                <li><a class="nav-link" href="">Sản phẩm</a></li>
+                <li><a class="nav-link" href="">Giới thiệu</a></li>
+                <li><a class="nav-link" href="">Liên hệ</a></li>
             </ul>
 
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
@@ -37,7 +35,7 @@
                     <div class="intro-excerpt">
                         <h1>Modern Interior <span clsas="d-block">Design Studio</span></h1>
                         <p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
-                        <p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
+                        <p><a href="" class="btn btn-secondary me-2">Shop Now</a>
                     </div>
                 </div>
                 <div class="col-lg-7">
