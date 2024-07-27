@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    Danh sách Sản phẩm
+    Danh sách danh mục
 @endsection
 
 @section('content')
@@ -9,12 +9,12 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">Danh sách Sản phẩm</h4>
+                <h4 class="mb-sm-0">Danh sách danh mục</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                        <li class="breadcrumb-item active">Danh sách Sản phẩm</li>
+                        <li class="breadcrumb-item active">Danh sách danh mục</li>
                     </ol>
                 </div>
 
@@ -29,7 +29,7 @@
                 <div class="card-header d-flex justify-content-between">
                     <h5 class="card-title mb-0">Danh sách</h5>
 
-                    <a href="{{ route('admin.products.addProduct') }}" class="btn btn-primary mb-3">Thêm mới</a>
+                    <a href="{{ route('admin.category.addCategory') }}" class="btn btn-primary mb-3">Thêm mới</a>
                 </div>
                 <div class="card-body">
                     <table id="example"
@@ -39,21 +39,8 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Img Thumbnail</th>
-                            <th>Name</th>
-                            <th>SKU</th>
-                            <th>Catalogues</th>
-                            <th>Price Regular</th>
-                            <th>Price Sale</th>
-                            <th>Views</th>
-                            <th>Is Active</th>
-                            <th>Is Hot Deal</th>
-                            <th>Is Good Deal</th>
-                            <th>Is New</th>
-                            <th>Is Show Home</th>
-                            <th>Tags</th>
-                            <th>Created at</th>
-                            <th>Updated at</th>
+                            <th>category</th>
+                           
                             <th>Action</th>
                         </tr>
                         </thead>

@@ -10,16 +10,23 @@
       <div class="block">
         <div class="row justify-content-center">
           <center><h2>Đăng nhập</h2></center>
-            <form>
+          @if (session('message'))
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{session('message')}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
+           <form action="{{route('showLogin')}}" method="POST">
+              @csrf
               <div class="row">
               
               <div class="form-group">
                 <label class="text-black" for="email">Email</label>
-                <input type="email" class="form-control" id="email">
+                <input type="email" class="form-control" id="email" name="email">
               </div>
               <div class="form-group">
                 <label class="text-black" for="password">Mật khẩu</label>
-                <input type="password" class="form-control" id="password">
+                <input type="password" class="form-control" id="password" name="password">
               </div>
 
               <div class="form-group">
@@ -34,7 +41,9 @@
 
               <button type="submit" class="btn btn-primary-hover-outline mt-4">Đăng nhập</button>
             </form>
-
+            <a href="{{route('showforgotpassword')}}">Quên mật khẩu</a>
+  <a href="{{route('showRegister')}}">Đăng ký</a>
+  
           </div>
 
         </div>
