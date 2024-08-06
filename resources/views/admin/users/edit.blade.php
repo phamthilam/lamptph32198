@@ -17,7 +17,9 @@
                         <label for="name" class="form-label">name</label>
                         <input type="text" class="form-control" name="name" value="{{$user->name}}">
                     </div>
-                    
+                    @error('name')
+                    <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
             <div class="row">
@@ -26,7 +28,9 @@
                         <label for="email" class="form-label">email</label>
                         <input type="email" class="form-control" name="email" value="{{$user->email}}" >
                     </div>
-                    
+                    @error('email')
+                    <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
             <div class="row">
@@ -35,7 +39,9 @@
                         <label for="address" class="form-label">address</label>
                         <input type="text" class="form-control" name="address" value="{{$user->address}}">
                     </div>
-                    
+                    {{-- @error('email')
+                    <p class="text-danger">{{ $message }}</p>
+                    @enderror --}}
                 </div>
             </div>
             <div class="row">
@@ -44,7 +50,9 @@
                         <label for="phone" class="form-label">phone</label>
                         <input type="text" class="form-control" name="phone" value="{{$user->phone}}">
                     </div>
-                    
+                    @error('phone')
+                    <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
             {{-- <div class="row">

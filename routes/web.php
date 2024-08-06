@@ -44,7 +44,8 @@ Route::get('showforgotpassword',[LoginController::class,'showforgotpassword'])->
 Route::post('showforgotpassword',[LoginController::class,'sendMail']);
 
 Route::get('product/{id}', [ProductsController::class, 'detailPro'])->name('detailPro');
-
+Route::post('dashboard', [ProductsController::class, 'searchProduct'])
+->name('searchProduct');
 //mua hàng
 Route::get('listcart', [CartController::class, 'list'])->name('list');
 Route::post('addcart', [CartController::class, 'add'])->name('add');

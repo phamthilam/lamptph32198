@@ -6,20 +6,19 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\ProductVarisant;
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
+use App\Models\CartItem;
 
 class CartController extends Controller
 {
     public function list() {
         $cart = session('cart');
-
         $totalAmount = 0;
         if (!empty($cart)) {
              foreach ($cart as $item) {
             $totalAmount += $item['quantity'] * $item['price'];
         }
         }
-       
-
         return view('client.cart', compact('totalAmount'));
     }
     public function add(){
@@ -36,18 +35,26 @@ class CartController extends Controller
             ->firstOrFail();
 
         if (!isset( session('cart')[$productVariant->id] ) ) {
-            $data = $product->toArray()
-                + $productVariant->toArray()
-                + ['quantity' => \request('quantity')];
+            $data=array_merge(
+                $product->toArray(),
+                $productVariant->toArray(),
+                ['quantity' => \request('quantity')],
+                ['user_id' => session('idUser')],
+                ['product_variant_id' => $productVariant->id]
 
+            );
             session()->put('cart.' . $productVariant->id,  $data);
+             
         } else {
             $data = session('cart')[$productVariant->id];
             $data['quantity'] = \request('quantity');
 
             session()->put('cart.' . $productVariant->id,  $data);
         }
-
+        $data['product_variant_id'] = $productVariant->id;
+         $cart=Cart::query()->create($data);
+         $data['cart_id'] = $cart->id;
+         CartItem::query()->create($data);
         return redirect()->route('list');
         } else{
             return redirect()->route('showLogin')->with([

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\EditUserRequest;
 
 class UserController extends Controller
 {
@@ -30,7 +31,7 @@ public function editUser($id){
     $user=User::query()->findOrFail($id);
     return view('admin.users.edit',compact('user'));
 }
-public function editPostUser($id,Request $request){
+public function editPostUser($id,EditUserRequest $request){
     $user=User::query()->findOrFail($id);
     $data=[
         'name'=>$request->name,

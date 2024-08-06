@@ -5,6 +5,7 @@ namespace App\Http\Controllers\client;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterUserRequest;
 use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
@@ -12,7 +13,7 @@ class RegisterController extends Controller
     public function showRegister(){
         return view('client.register');
     }
-    public function register(Request $request)
+    public function register(RegisterUserRequest $request)
     {
         $check=User::where('email',$request->email)->exists();
         if (!$check) {
@@ -26,6 +27,9 @@ class RegisterController extends Controller
         ];
         $user=User::create($data);
         Auth::login($user);
+        $user = Auth::user();
+        session(['name' => $user->name]);
+           
         $request->session()->regenerate();
         
     return redirect()->intended('/');

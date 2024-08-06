@@ -22,10 +22,16 @@
                 <div class="form-group">
                   <label class="text-black" for="name">Tên</label>
                   <input type="text" class="form-control" id="name" name="name">
+                  @error('name')
+                  <p class="text-danger">{{ $message }}</p>
+                  @enderror
                 </div>
               <div class="form-group">
                 <label class="text-black" >Email</label>
                 <input type="email" class="form-control" name="email">
+                @error('email')
+                <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
               <div class="form-group">
                 <label class="text-black" for="address">địa chỉ</label>
@@ -38,10 +44,13 @@
               <div class="form-group">
                 <label class="text-black" for="password">Mật khẩu</label>
                 <input type="password" class="form-control" id="password" name="password">
+                @error('password')
+                <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
               <div class="form-group">
                 <label class="text-black" for="password_confirm">Nhập lại mật khẩu</label>
-                <input type="password_confirm" class="form-control" id="password_confirm" name="password_confirm">
+                <input type="password" class="form-control" id="password_confirm" name="password_confirm">
               </div>
               
             </div>

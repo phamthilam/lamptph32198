@@ -23,10 +23,16 @@
               <div class="form-group">
                 <label class="text-black" for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email">
+                @error('email')
+                <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
               <div class="form-group">
                 <label class="text-black" for="password">Mật khẩu</label>
                 <input type="password" class="form-control" id="password" name="password">
+                @error('password')
+                <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
 
               <div class="form-group">

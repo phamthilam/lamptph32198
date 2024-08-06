@@ -18,4 +18,14 @@ class ProductsController extends Controller
 
         return view('client.detailpro', compact('product', 'colors', 'sizes'));
     }
+    public function searchProduct(Request $req){
+        $products = Product::where('name', 'like', "%$req->search%")->get();
+
+        return response()->json([
+            'message'   => 'success',
+            'data'  => $products,
+            'status_code' => 200
+        ], 200);
+
+    }
 }

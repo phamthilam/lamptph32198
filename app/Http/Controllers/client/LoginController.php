@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Mail\ContactEmail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginUserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
@@ -15,7 +16,7 @@ class LoginController extends Controller
     public function showlogin(){
         return view('client.login');
     }
-    public function login(Request $request)
+    public function login(LoginUserRequest $request)
     {
         if (Auth::attempt([ 
             'email'=>$request->email,
@@ -23,7 +24,7 @@ class LoginController extends Controller
 
         ])) {
             $user = Auth::user();
-            session(['name' => $user->name]);
+            session(['name' => $user->name,'idUser'=>$user->id]);
            
             //dang nhap thanh cong
             if(Auth::user()->type=='admin'){

@@ -94,7 +94,7 @@
                                         </td>
                                         <td>
                                             <input type="text" class="form-control"
-                                                   value="20"
+                                                   value="0"
                                                    name="product_variants[{{ $sizeID . '-' . $colorID }}][quatity]">
                                         </td>
                                     </tr>
