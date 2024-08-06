@@ -7,8 +7,9 @@
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-body">
-        <form method="post" action="" enctype="multipart/form-data">
+        <form method="post" action="{{route('admin.category.editPostCategory',$cate->id)}}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <h1 class="h3 mb-2 text-gray-800">Thêm mới danh mục</h1>
             <div class="row">
                 <div class="col-md-6">

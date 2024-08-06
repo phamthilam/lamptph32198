@@ -111,7 +111,7 @@
     </div>
 </div>
 <!-- End Popular Product -->
-<h2 class="section-title">Sản phẩm yêu thích nhất</h2>
+<center><h2 class="section-title">Sản phẩm yêu thích nhất</h2></center>
 <div class="product-section">
     <div class="container">
         <div class="row">
@@ -177,7 +177,7 @@
     </div>
 </div>
 <!-- End Product Section -->
-<h2 class="section-title">Sản phẩm mới nhất</h2>
+<center><h2 class="section-title">Sản phẩm mới nhất</h2></center>
 <div class="product-section">
     <div class="container">
         <div class="row">

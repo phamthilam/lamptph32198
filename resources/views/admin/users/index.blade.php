@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    Danh sách size
+    Danh sách Sản phẩm
 @endsection
 
 @section('content')
@@ -9,12 +9,12 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">Danh sách Size</h4>
+                <h4 class="mb-sm-0">Danh sách Sản phẩm</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                        <li class="breadcrumb-item active">Danh sách size</li>
+                        <li class="breadcrumb-item active">Danh sách Sản phẩm</li>
                     </ol>
                 </div>
 
@@ -29,7 +29,7 @@
                 <div class="card-header d-flex justify-content-between">
                     <h5 class="card-title mb-0">Danh sách</h5>
 
-                    <a href="{{ route('admin.size.addSize') }}" class="btn btn-primary mb-3">Thêm mới</a>
+                    <a href="{{ route('admin.user.addUser') }}" class="btn btn-primary mb-3">Thêm mới</a>
                 </div>
                 <div class="card-body">
                     <table id="example"
@@ -38,66 +38,39 @@
 
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>size</th>
-                           
+                            <th>ID</th>>
+                            <th>Name</th> 
+                            <th>email</th>
+                            <th>phone</th>
+                            <th>address</th>
                             <th>Action</th>
                         </tr>
                         </thead>
 
-                        {{-- <tbody>
-                        @foreach($data as $item)
+                        <tbody>
+                        @foreach($listUser as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
+                                <td>{{ $item->name}}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->phone }}</td>
+                                <td>{{ $item->address }}</td>
                                 <td>
-                                    @php
-                                        $url = $item->img_thumbnail;
-
-                                        if(! \Str::contains($url, 'http')) {
-                                            $url = \Illuminate\Support\Facades\Storage::url($url);
-                                        }
-                                    @endphp
-
-                                    <img src="{{ $url }}" alt="" width="100px">
-                                </td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->sku }}</td>
-                                <td>{{ $item->catalogue?->name }}</td>
-                                <td>{{ $item->price_regular }}</td>
-                                <td>{{ $item->price_sale }}</td>
-                                <td>{{ $item->views }}</td>
-                                <td>{!! $item->is_active ? '<span class="badge bg-primary">YES</span>'
-                                                                : '<span class="badge bg-danger">NO</span>' !!}</td>
-                                <td>{!! $item->is_hot_deal ? '<span class="badge bg-primary">YES</span>'
-                                                                : '<span class="badge bg-danger">NO</span>' !!}</td>
-                                <td>{!! $item->is_good_deal ? '<span class="badge bg-primary">YES</span>'
-                                                                : '<span class="badge bg-danger">NO</span>' !!}</td>
-                                <td>{!! $item->is_new ? '<span class="badge bg-primary">YES</span>'
-                                                                : '<span class="badge bg-danger">NO</span>' !!}</td>
-                                <td>{!! $item->is_show_home ? '<span class="badge bg-primary">YES</span>'
-                                                                : '<span class="badge bg-danger">NO</span>' !!}</td>
-                                <td>
-                                    @foreach($item->tags as $tag)
-                                        <span class="badge bg-info">{{ $tag->name }}</span>
-                                    @endforeach
-                                </td>
-                                <td>{{ $item->created_at }}</td>
-                                <td>{{ $item->updated_at }}</td>
-                                <td>
-                                    <a href="{{ route('admin.products.edit', $item) }}"
+                                    <a href="{{route('admin.user.editUser',$item->id)}}"
                                         type="submit" class="btn btn-warning">Edit</a>
-
-                                    <form action="{{ route('admin.products.destroy', $item) }}" method="post">
+                                        <a href="{{route('admin.user.deleteUser',$item->id)}}"
+                                           onclick="return confirm('Chắc chắn không?')"  type="submit" class="btn btn-danger">delete</a>
+                                    {{-- <form action="{{ route('admin.products.destroy', $item) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button
-                                            onclick="return confirm('Chắc chắn không?')"
+                                           
                                             type="submit" class="btn btn-danger">DELETE</button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                         @endforeach
-                        </tbody> --}}
+                        </tbody>
 
                     </table>
                 </div>
@@ -130,9 +103,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 
-    <script>
-        new DataTable("#example", {
-            order: [ [0, 'desc'] ] }
-        );
-    </script>
+    
 @endsection

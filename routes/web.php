@@ -1,15 +1,20 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\ShopController;
 use App\Http\Controllers\admin\SizeController;
 use App\Http\Controllers\admin\ColorController;
+use App\Http\Controllers\client\CartController;
 use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\AboutController;
 use App\Http\Controllers\client\LoginController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\client\ContactController;
+use App\Http\Controllers\client\OrderController;
+use App\Http\Controllers\client\ProductsController;
 use App\Http\Controllers\client\RegisterController;
 
 /*
@@ -24,10 +29,10 @@ use App\Http\Controllers\client\RegisterController;
 */
 
 Route::get('/', function () {
-    return view('client.home');
-});
+    $products=Product::query()->latest('id')->limit(10)->get();
+    return view('client.shop',compact('products'));
+})->name('showShop');
 Route::get('showhome',[HomeController::class,'showHome'])->name('showHome');
-Route::get('shop',[ShopController::class,'showShop'])->name('showShop');
 Route::get('about',[AboutController::class,'showAbout'])->name('showAbout');
 Route::get('contact',[ContactController::class,'showContact'])->name('showContact');
 Route::get('login',[HomeController::class,'showLogin'])->name('showLogin');
@@ -37,6 +42,15 @@ Route::post('register',[RegisterController::class,'register']);
 Route::get('logout',[LoginController::class,'logout'])->name('logout');
 Route::get('showforgotpassword',[LoginController::class,'showforgotpassword'])->name('showforgotpassword');
 Route::post('showforgotpassword',[LoginController::class,'sendMail']);
+
+Route::get('product/{id}', [ProductsController::class, 'detailPro'])->name('detailPro');
+
+//mua hàng
+Route::get('listcart', [CartController::class, 'list'])->name('list');
+Route::post('addcart', [CartController::class, 'add'])->name('add');
+Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
+Route::post('order', [OrderController::class, 'save'])->name('save');
+
 
 Route::group(['prefix'=>'admin', 'as'=>'admin.'], function(){
     Route::group([
@@ -48,8 +62,14 @@ Route::group(['prefix'=>'admin', 'as'=>'admin.'], function(){
         ->name('listProducts');
         Route::get('addpro', [ProductController::class, 'addProduct'])
         ->name('addProduct');
-        Route::get('editpro', [ProductController::class, 'editProduct'])
+        Route::post('addPostProduct', [ProductController::class, 'addPostProduct'])
+        ->name('addPostProduct');
+        Route::get('editpro/{id}', [ProductController::class, 'editProduct'])
         ->name('editProduct');
+        Route::put('updatepro/{id}', [ProductController::class, 'upadteProduct'])
+        ->name('upadteProducts');
+        Route::get('deletepro/{id}', [ProductController::class, 'deleteProduct'])
+        ->name('deleteProduct');
     });
     Route::group([
         'prefix'=>'category',
@@ -60,32 +80,32 @@ Route::group(['prefix'=>'admin', 'as'=>'admin.'], function(){
         ->name('listCategory');
         Route::get('addcate', [CategoryController::class, 'addCategory'])
         ->name('addCategory');
-        Route::get('editcate', [CategoryController::class, 'editCategory'])
+        Route::post('addcate', [CategoryController::class, 'addPostCategory'])
+        ->name('addPostCategory');
+        Route::get('editcate/{id}', [CategoryController::class, 'editCategory'])
         ->name('editCategory');
+        Route::put('updatecate/{id}', [CategoryController::class, 'editPostCategory'])
+        ->name('editPostCategory');
+        Route::get('deleteCate/{id}', [CategoryController::class, 'deleteCate'])
+        ->name('deleteCate');
     });
     Route::group([
-        'prefix'=>'size',
-        'as'=>'size.',
+        'prefix'=>'user',
+        'as'=>'user.',
         'middleware'=>'checkAdmin'
     ], function (){
-        Route::get('/', [SizeController::class, 'listSize'])
-        ->name('listSize');
-        Route::get('addsize', [SizeController::class, 'addSize'])
-        ->name('addSize');
-        Route::get('editsize', [SizeController::class, 'editSize'])
-        ->name('editSize');
-    });
-    Route::group([
-        'prefix'=>'color',
-        'as'=>'color.',
-         'middleware'=>'checkAdmin'
-        
-    ], function (){
-        Route::get('/', [ColorController::class, 'listColor'])
-        ->name('listColor');
-        Route::get('addcolor', [ColorController::class, 'addColor'])
-        ->name('addColor');
-        Route::get('editcolor', [ColorController::class, 'editColor'])
-        ->name('editColor');
+        Route::get('/', [UserController::class, 'listUser'])
+        ->name('listUser');
+        Route::get('adduser', [UserController::class, 'addUser'])
+        ->name('addUser');
+        Route::post('adduser', [UserController::class, 'addPostUser'])
+        ->name('addPostUser');
+        Route::get('edituser/{id}', [UserController::class, 'editUser'])
+        ->name('editUser');
+        Route::put('edituser/{id}', [UserController::class, 'editPostUser'])
+        ->name('editPostUser');
+        Route::get('deleteuser/{id}', [UserController::class, 'deleteUser'])
+        ->name('deleteUser');
     });
 });
+

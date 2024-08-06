@@ -60,47 +60,7 @@
                         </ul>
                     </div>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarCatalogues" data-bs-toggle="collapse" role="button"
-                       aria-expanded="false" aria-controls="sidebarCatalogues">
-                        <i class="ri-layout-3-line"></i>
-                        <span data-key="t-layouts">Size san phaamr</span>
-
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarCatalogues">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                        <a href="{{route('admin.size.listSize')}}" class="nav-link"
-                                   data-key="t-horizontal">Danh sách</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.size.addSize')}}" class="nav-link"
-                                   data-key="t-horizontal">Thêm mới</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarCatalogues" data-bs-toggle="collapse" role="button"
-                       aria-expanded="false" aria-controls="sidebarCatalogues">
-                        <i class="ri-layout-3-line"></i>
-                        <span data-key="t-layouts">mau san phaamr</span>
-
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarCatalogues">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{route('admin.color.listColor')}}" class="nav-link"
-                                   data-key="t-horizontal">Danh sách</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.color.addColor')}}" class="nav-link"
-                                   data-key="t-horizontal">Thêm mới</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+             
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarProduct" data-bs-toggle="collapse" role="button"
                        aria-expanded="false" aria-controls="sidebarProduct">
@@ -116,6 +76,26 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('admin.products.addProduct')}}" class="nav-link"
+                                   data-key="t-horizontal">Thêm mới</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarCategory" data-bs-toggle="collapse" role="button"
+                       aria-expanded="false" aria-controls="sidebarCategory">
+                        <i class="ri-layout-3-line"></i>
+                        <span data-key="t-layouts">User</span>
+
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarCategory">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{route('admin.user.listUser')}}" class="nav-link"
+                                   data-key="t-horizontal">Danh sách</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"
                                    data-key="t-horizontal">Thêm mới</a>
                             </li>
                         </ul>

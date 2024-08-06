@@ -13,9 +13,9 @@
 
         <div class="collapse navbar-collapse" id="navbarsFurni">
             <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                <li class="nav-item active">
+                {{-- <li class="nav-item active">
                     <a class="nav-link" href="{{route('showHome')}}">Trang chủ</a>
-                </li>
+                </li> --}}
                 <li><a class="nav-link" href="{{route('showShop')}}">Sản phẩm</a></li>
                 <li><a class="nav-link" href="{{route('showAbout')}}">Giới thiệu</a></li>
                 <li><a class="nav-link" href="{{route('showContact')}}">Liên hệ</a></li>
@@ -26,11 +26,22 @@
                         <img class="dropdown-toggle" src="{{ asset('theme/client/assets/images/user.svg') }}" alt="" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown">
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="{{route('showLogin')}}">Đăng nhập</a></li>
-                            <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
+                            
+                    
+                     @if (session('name'))
+                    <p class="dropdown-item">{{session('name')}}</p>
+                           <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li> 
+                     @else 
+                              <li><a class="dropdown-item" href="{{route('showLogin')}}">Đăng nhập</a></li>
+                     @endif
+                                 
+                          
+                          
+                            
+                            
                         </ul>
                     </div>
-                <li><a class="nav-link" href=""><img src="{{ asset('theme/client/assets/images/cart.svg') }}"></a></li>
+                <li><a class="nav-link" href="{{route('list')}}"><img src="{{ asset('theme/client/assets/images/cart.svg') }}"></a></li>
             </ul>
         </div>
     </div>

@@ -45,59 +45,22 @@
                         </tr>
                         </thead>
 
-                        {{-- <tbody>
-                        @foreach($data as $item)
+                        <tbody>
+                        @foreach($listCate as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
-                                <td>
-                                    @php
-                                        $url = $item->img_thumbnail;
-
-                                        if(! \Str::contains($url, 'http')) {
-                                            $url = \Illuminate\Support\Facades\Storage::url($url);
-                                        }
-                                    @endphp
-
-                                    <img src="{{ $url }}" alt="" width="100px">
-                                </td>
                                 <td>{{ $item->name }}</td>
-                                <td>{{ $item->sku }}</td>
-                                <td>{{ $item->catalogue?->name }}</td>
-                                <td>{{ $item->price_regular }}</td>
-                                <td>{{ $item->price_sale }}</td>
-                                <td>{{ $item->views }}</td>
-                                <td>{!! $item->is_active ? '<span class="badge bg-primary">YES</span>'
-                                                                : '<span class="badge bg-danger">NO</span>' !!}</td>
-                                <td>{!! $item->is_hot_deal ? '<span class="badge bg-primary">YES</span>'
-                                                                : '<span class="badge bg-danger">NO</span>' !!}</td>
-                                <td>{!! $item->is_good_deal ? '<span class="badge bg-primary">YES</span>'
-                                                                : '<span class="badge bg-danger">NO</span>' !!}</td>
-                                <td>{!! $item->is_new ? '<span class="badge bg-primary">YES</span>'
-                                                                : '<span class="badge bg-danger">NO</span>' !!}</td>
-                                <td>{!! $item->is_show_home ? '<span class="badge bg-primary">YES</span>'
-                                                                : '<span class="badge bg-danger">NO</span>' !!}</td>
                                 <td>
-                                    @foreach($item->tags as $tag)
-                                        <span class="badge bg-info">{{ $tag->name }}</span>
-                                    @endforeach
-                                </td>
-                                <td>{{ $item->created_at }}</td>
-                                <td>{{ $item->updated_at }}</td>
-                                <td>
-                                    <a href="{{ route('admin.products.edit', $item) }}"
+                                    <a href="{{ route('admin.category.editCategory', $item->id) }}"
                                         type="submit" class="btn btn-warning">Edit</a>
-
-                                    <form action="{{ route('admin.products.destroy', $item) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button
-                                            onclick="return confirm('Chắc chắn không?')"
-                                            type="submit" class="btn btn-danger">DELETE</button>
-                                    </form>
+                                        <a href="{{ route('admin.category.deleteCate', $item->id) }}"
+                                            type="submit" class="btn btn-warning"  
+                                            onclick="return confirm('Chắc chắn không?')">DELETE</a>
+                                    
                                 </td>
                             </tr>
                         @endforeach
-                        </tbody> --}}
+                        </tbody>
 
                     </table>
                 </div>

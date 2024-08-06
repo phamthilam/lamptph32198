@@ -22,6 +22,9 @@ class LoginController extends Controller
             'password'=>$request->password,
 
         ])) {
+            $user = Auth::user();
+            session(['name' => $user->name]);
+           
             //dang nhap thanh cong
             if(Auth::user()->type=='admin'){
                 return redirect()->route('admin.products.listProducts');
@@ -36,10 +39,12 @@ class LoginController extends Controller
             ]);
         }
     }
-    public function logout(){
+    public function logout(Request $request){
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->route('showLogin')->with([
-            'message'=>'dang xuat thanh cong'
+            'message'=>'Đăng xuất thành công'
         ]);
     }
     public function showforgotpassword()

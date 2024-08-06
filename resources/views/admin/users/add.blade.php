@@ -1,20 +1,56 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    Thêm size
+    Theem Sản phẩm
 @endsection
 
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-body">
-        <form method="post" action="" enctype="multipart/form-data">
+        <form method="post" action="{{route('admin.user.addPostUser')}}" enctype="multipart/form-data">
             @csrf
-            <h1 class="h3 mb-2 text-gray-800">Thêm mới size</h1>
+            <h1 class="h3 mb-2 text-gray-800">Thêm mới User</h1>
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Size</label>
+                        <label for="name" class="form-label">name</label>
                         <input type="text" class="form-control" name="name">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">email</label>
+                        <input type="email" class="form-control" name="email">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="address" class="form-label">address</label>
+                        <input type="text" class="form-control" name="address">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">phone</label>
+                        <input type="text" class="form-control" name="phone">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="password" class="form-label">password</label>
+                        <input type="password" class="form-control" name="password">
                     </div>
                     
                 </div>

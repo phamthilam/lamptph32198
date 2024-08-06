@@ -38,79 +38,45 @@
 
                         <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>ID</th>>
+                            <th>Name</th> 
                             <th>Img Thumbnail</th>
-                            <th>Name</th>
-                            <th>SKU</th>
-                            <th>Catalogues</th>
-                            <th>Price Regular</th>
-                            <th>Price Sale</th>
-                            <th>Views</th>
-                            <th>Is Active</th>
-                            <th>Is Hot Deal</th>
-                            <th>Is Good Deal</th>
-                            <th>Is New</th>
-                            <th>Is Show Home</th>
-                            <th>Tags</th>
-                            <th>Created at</th>
-                            <th>Updated at</th>
+                            <th>category</th>
+                            <th>Price</th>
                             <th>Action</th>
                         </tr>
                         </thead>
 
-                        {{-- <tbody>
+                        <tbody>
                         @foreach($data as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
+                                <td>{{ $item->name}}</td>
+                                    <td>
+                                        {{-- {{$item->image}} --}}
+                                        <img src="{{ asset('storage/' . $item->image) }}" width="100px">
+                                        {{-- <img src="{{ \Storage::url($item->img) }}" alt="" width="100px"> --}}
+                                    </td>
+                                   
+                                <td>{{ $item->category?->name }}</td>
+                                <td>{{ $item->price }}</td>
+                             
                                 <td>
-                                    @php
-                                        $url = $item->img_thumbnail;
-
-                                        if(! \Str::contains($url, 'http')) {
-                                            $url = \Illuminate\Support\Facades\Storage::url($url);
-                                        }
-                                    @endphp
-
-                                    <img src="{{ $url }}" alt="" width="100px">
-                                </td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->sku }}</td>
-                                <td>{{ $item->catalogue?->name }}</td>
-                                <td>{{ $item->price_regular }}</td>
-                                <td>{{ $item->price_sale }}</td>
-                                <td>{{ $item->views }}</td>
-                                <td>{!! $item->is_active ? '<span class="badge bg-primary">YES</span>'
-                                                                : '<span class="badge bg-danger">NO</span>' !!}</td>
-                                <td>{!! $item->is_hot_deal ? '<span class="badge bg-primary">YES</span>'
-                                                                : '<span class="badge bg-danger">NO</span>' !!}</td>
-                                <td>{!! $item->is_good_deal ? '<span class="badge bg-primary">YES</span>'
-                                                                : '<span class="badge bg-danger">NO</span>' !!}</td>
-                                <td>{!! $item->is_new ? '<span class="badge bg-primary">YES</span>'
-                                                                : '<span class="badge bg-danger">NO</span>' !!}</td>
-                                <td>{!! $item->is_show_home ? '<span class="badge bg-primary">YES</span>'
-                                                                : '<span class="badge bg-danger">NO</span>' !!}</td>
-                                <td>
-                                    @foreach($item->tags as $tag)
-                                        <span class="badge bg-info">{{ $tag->name }}</span>
-                                    @endforeach
-                                </td>
-                                <td>{{ $item->created_at }}</td>
-                                <td>{{ $item->updated_at }}</td>
-                                <td>
-                                    <a href="{{ route('admin.products.edit', $item) }}"
+                                    <a href="{{ route('admin.products.editProduct', $item->id) }}"
                                         type="submit" class="btn btn-warning">Edit</a>
-
-                                    <form action="{{ route('admin.products.destroy', $item) }}" method="post">
+                                        <a href="{{ route('admin.products.deleteProduct', $item->id) }}"
+                                           onclick="return confirm('Chắc chắn không?')"  type="submit" class="btn btn-danger">delete</a>
+                                    {{-- <form action="{{ route('admin.products.destroy', $item) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button
-                                            onclick="return confirm('Chắc chắn không?')"
+                                           
                                             type="submit" class="btn btn-danger">DELETE</button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                         @endforeach
-                        </tbody> --}}
+                        </tbody>
 
                     </table>
                 </div>
