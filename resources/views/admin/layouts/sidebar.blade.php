@@ -94,14 +94,26 @@
                                 <a href="{{route('admin.user.listUser')}}" class="nav-link"
                                    data-key="t-horizontal">Danh sách</a>
                             </li>
+                           
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarCategory" data-bs-toggle="collapse" role="button"
+                       aria-expanded="false" aria-controls="sidebarCategory">
+                        <i class="ri-layout-3-line"></i>
+                        <span data-key="t-layouts">Blog</span>
+
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarCategory">
+                        <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#" class="nav-link"
+                                <a href="{{route('admin.blog.addBlog')}}" class="nav-link"
                                    data-key="t-horizontal">Thêm mới</a>
                             </li>
                         </ul>
                     </div>
                 </li>
-
             </ul>
         </div>
         <!-- Sidebar -->

@@ -12,6 +12,7 @@ use App\Http\Controllers\client\LoginController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\client\ContactController;
 use App\Http\Controllers\client\OrderController;
 use App\Http\Controllers\client\ProductsController;
@@ -107,6 +108,16 @@ Route::group(['prefix'=>'admin', 'as'=>'admin.'], function(){
         ->name('editPostUser');
         Route::get('deleteuser/{id}', [UserController::class, 'deleteUser'])
         ->name('deleteUser');
+    });
+    Route::group([
+        'prefix'=>'blog',
+        'as'=>'blog.',
+        'middleware'=>'checkAdmin'
+    ], function (){
+        Route::get('/', [BlogController::class, 'addBlog'])
+        ->name('addBlog');
+        Route::post('addBlog', [BlogController::class, 'addPostBlog'])
+        ->name('addPostBlog');
     });
 });
 
